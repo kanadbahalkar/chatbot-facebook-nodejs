@@ -184,6 +184,21 @@ function handleEcho(messageId, appId, metadata) {
 
 function handleApiAiAction(sender, action, responseText, contexts, parameters) {
 	switch (action) {
+		case 'are-chatbots-secure': 
+			let replies = [
+				{
+					"content_type":"text",
+					"title":"Does that answer your question?",
+					"payload":"Sweet! Do you need help with anything else?"
+				},
+				{
+					"content_type":"text",
+					"title":"I'm still confused... :/",
+					"payload":"Hmmm, give me a few minutes, Ill hand this over to our Chief Koala. He knows all the answers!"
+				}
+			];
+			sendQuickReply(sender, responseText, replies);
+			break; 
 		default:
 			//unhandled action, just send back the text
 			sendTextMessage(sender, responseText);
